@@ -6,16 +6,20 @@ using UnityEngine;
 public class NavJugador : MonoBehaviour
 {
     float velocidad;
-    GameObject GameobjectwithCharacterController;
-    CharacterController controller ;
+    CharacterController controller;
+
+    public GameObject gameManagerObject;
+    public GameManager gameManagerScript;
+
     void Start()
     {
+        gameManagerObject = GameObject.Find("GameManager");
+        gameManagerScript = gameManagerObject.GetComponent<GameManager>();
+
         controller = this.GetComponent<CharacterController>();
-         velocidad = 2.5f;
+        velocidad = 5f;
     }
-    void Update()
-    {
-    }
+
     void FixedUpdate()
     {
         //Capturo el movimiento en los ejes
@@ -28,13 +32,30 @@ public class NavJugador : MonoBehaviour
 
         //Genero el vector de movimiento
         //Muevo el jugador
-        //transform.position += anguloTeclas * velocidad * Time.deltaTime;
         controller.Move(anguloTeclas * velocidad * Time.deltaTime);
+        
         if (anguloTeclas != null && anguloTeclas != Vector3.zero)
         {
             transform.forward = anguloTeclas * 1;
             transform.rotation = Quaternion.LookRotation(anguloTeclas);
         }
+
+        PlayerToTheFloor();
     }
 
+    void PlayerToTheFloor()
+    {
+        Vector3 currentPosition = transform.position;
+        currentPosition.y = 0f;
+        transform.position = currentPosition;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Dot"))
+        {
+            Destroy(other.GameObject());
+            gameManagerScript.pickedDots++;
+        }
+    }
 }
