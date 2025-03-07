@@ -15,8 +15,8 @@ public class AliadoSiguiendo : AliadoEstado
     // Metodo que se ejecuta al entrar en el estado Siguiendo
     public override void Entrar()
     {
-        aliadoIA.GetComponent<Renderer>().material.color = Color.blue;
-        aliadoIA.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        aliadoIA.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
+        aliadoIA.transform.localScale *= 2;
         aliadoIA.animator.Play("Run");
 
         base.Entrar();
@@ -42,9 +42,13 @@ public class AliadoSiguiendo : AliadoEstado
     // Comprueba si el aliado puede ver al enemigo
     public bool PuedoVerAlEnemigo()
     {
-        if (Vector3.Distance(aliadoIA.enemy.transform.position, aliadoIA.transform.position) <= 5f)
+        // Comprueba si quedan enemigos para que no de error
+        if (aliadoIA.enemy != null)
         {
-            return true;
+            if (Vector3.Distance(aliadoIA.enemy.transform.position, aliadoIA.transform.position) <= 4f)
+            {
+                return true;
+            }
         }
         return false;
     }

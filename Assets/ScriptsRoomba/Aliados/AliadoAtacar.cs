@@ -15,9 +15,10 @@ public class AliadoAtacar : AliadoEstado
     // Metodo que se ejecuta al entrar en el estado Atacar
     public override void Entrar()
     {
-        aliadoIA.GetComponent<Renderer>().material.color = Color.yellow;
-        aliadoIA.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-        aliadoIA.agent.speed *= 1.5f;
+        aliadoIA.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
+        if (!aliadoIA.tamanyoMax) { aliadoIA.transform.localScale *= 2f; }
+        aliadoIA.tamanyoMax = true;
+        aliadoIA.agent.speed *= 2f;
         aliadoIA.agent.SetDestination(aliadoIA.enemy.transform.position);
         aliadoIA.animator.Play("Run");
 
@@ -27,7 +28,7 @@ public class AliadoAtacar : AliadoEstado
     // Metodo que se ejecuta mientras el estado Atacar esta activo
     public override void Actualizar()
     {
-        siguienteEstado = new AliadoEsperando(aliadoIA);
+        siguienteEstado = new AliadoAtacar(aliadoIA);
         faseActual = EVENTO.SALIR;
     }
 
@@ -37,13 +38,4 @@ public class AliadoAtacar : AliadoEstado
         base.Salir();
     }
 
-    // Comprueba si el aliado puede atacar al enemigo
-    public bool PuedoAtacarAlEnemigo()
-    {
-        if (Vector3.Distance(aliadoIA.enemy.transform.position, aliadoIA.transform.position) <= 3f)
-        {
-            return true;
-        }
-        return false;
-    }
 }

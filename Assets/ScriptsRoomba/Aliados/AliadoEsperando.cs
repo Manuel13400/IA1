@@ -15,7 +15,7 @@ public class AliadoEsperando : AliadoEstado
     // Metodo que se ejecuta al entrar en el estado Esperando
     public override void Entrar()
     {
-        aliadoIA.GetComponent<Renderer>().material.color = Color.magenta;
+        aliadoIA.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.magenta;
         aliadoIA.animator.Play("Idle");
 
         base.Entrar();
@@ -40,7 +40,7 @@ public class AliadoEsperando : AliadoEstado
     // Comprueba si el aliado puede ver al jugador
     public bool PuedoVerAlJugador()
     {
-        if (Vector3.Distance(aliadoIA.player.transform.position, aliadoIA.transform.position) <= 2f)
+        if (Vector3.Distance(aliadoIA.player.transform.position, aliadoIA.transform.position) <= 3f)
         {
             return true;
         }

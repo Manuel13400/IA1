@@ -28,12 +28,6 @@ public class AliadoEstado
     protected EVENTO faseActual;
     protected AliadoEstado siguienteEstado;
 
-    // Constructor vacio
-    public AliadoEstado()
-    {
-
-    }
-
     // Metodos llamado al entrar
     public virtual void Entrar()
     {

@@ -10,7 +10,7 @@ public class MovJugador : MonoBehaviour
     void Start()
     {
         controller = this.GetComponent<CharacterController>();
-        velocidad = 5f;
+        velocidad = 3f;
     }
 
     void Update()

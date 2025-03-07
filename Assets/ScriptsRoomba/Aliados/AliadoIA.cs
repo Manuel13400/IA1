@@ -14,6 +14,8 @@ public class AliadoIA : MonoBehaviour
 
     public Animator animator;
 
+    public bool tamanyoMax = false;
+
     void Start()
     {
         player = GameObject.Find("Player");
