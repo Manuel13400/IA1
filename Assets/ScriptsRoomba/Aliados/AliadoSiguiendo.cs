@@ -7,7 +7,6 @@ public class AliadoSiguiendo : AliadoEstado
     // Constructor que inicializa las variables
     public AliadoSiguiendo(AliadoIA aliado) : base()
     {
-        Debug.Log("Siguiendo");
         nombre = ESTADO.SIGUIENDO;
         initializeVariables(aliado);
     }
@@ -15,8 +14,15 @@ public class AliadoSiguiendo : AliadoEstado
     // Metodo que se ejecuta al entrar en el estado Siguiendo
     public override void Entrar()
     {
+        Debug.Log("Siguiendo");
+
+        // Color
         aliadoIA.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
+
+        // Tamanyo
         aliadoIA.transform.localScale *= 2;
+
+        // Animacion
         aliadoIA.animator.Play("Run");
 
         base.Entrar();

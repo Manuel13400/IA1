@@ -7,7 +7,6 @@ public class AliadoEsperando : AliadoEstado
     // Constructor que inicializa las variables
     public AliadoEsperando(AliadoIA aliado) : base()
     {
-        Debug.Log("Vigilando");
         nombre = ESTADO.ESPERANDO;
         initializeVariables(aliado);
     }
@@ -15,7 +14,12 @@ public class AliadoEsperando : AliadoEstado
     // Metodo que se ejecuta al entrar en el estado Esperando
     public override void Entrar()
     {
+        Debug.Log("Vigilando");
+
+        // Color
         aliadoIA.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.magenta;
+
+        // Animacion
         aliadoIA.animator.Play("Idle");
 
         base.Entrar();
