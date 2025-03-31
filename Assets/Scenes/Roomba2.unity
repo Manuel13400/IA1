@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 209145206}
   - component: {fileID: 209145205}
   - component: {fileID: 209145204}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 448688512}
   - component: {fileID: 448688511}
   - component: {fileID: 448688510}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 600701380}
   - component: {fileID: 600701379}
   - component: {fileID: 600701382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 1099074669}
   - component: {fileID: 1099074668}
   - component: {fileID: 1099074667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,11 +931,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8953559862906158554, guid: ef4276046760e6c47a93a695b4c73de4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -954,6 +949,7 @@ GameObject:
   - component: {fileID: 1292611081}
   - component: {fileID: 1292611080}
   - component: {fileID: 1292611084}
+  - component: {fileID: 1292611085}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1060,7 +1056,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -902729914
   m_Radius: 0.5000001
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1072,6 +1068,30 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1292611085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292611079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d146148fd93b944b4234ad3124c6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  agent: {fileID: 0}
+  puntoA: {x: 0, y: 0.5, z: 4}
+  puntoB: {x: 0, y: 0.5, z: -4}
+  moviendosePuntoFinal: 1
+  jugadorCapa:
+    serializedVersion: 2
+    m_Bits: 64
+  paredCapa:
+    serializedVersion: 2
+    m_Bits: 128
+  bala: {fileID: 1527695962630063302, guid: fd87479e4050a2749aba838c51966c0b, type: 3}
 --- !u!1 &1412895619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1104,7 @@ GameObject:
   - component: {fileID: 1412895623}
   - component: {fileID: 1412895622}
   - component: {fileID: 1412895621}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1229,7 +1249,7 @@ GameObject:
   - component: {fileID: 1649339853}
   - component: {fileID: 1649339852}
   - component: {fileID: 1649339851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1354,7 @@ GameObject:
   - component: {fileID: 1987695271}
   - component: {fileID: 1987695270}
   - component: {fileID: 1987695269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1439,7 +1459,7 @@ GameObject:
   - component: {fileID: 1999128058}
   - component: {fileID: 1999128057}
   - component: {fileID: 1999128056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1544,7 +1564,7 @@ GameObject:
   - component: {fileID: 2020778306}
   - component: {fileID: 2020778305}
   - component: {fileID: 2020778304}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
