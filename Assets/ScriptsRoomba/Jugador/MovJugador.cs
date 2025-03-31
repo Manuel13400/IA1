@@ -42,7 +42,7 @@ public class MovJugador : MonoBehaviour
     void PlayerToTheFloor()
     {
         Vector3 currentPosition = transform.position;
-        currentPosition.y = 0f;
+        currentPosition.y = 0.5f;
         transform.position = currentPosition;
     }
 

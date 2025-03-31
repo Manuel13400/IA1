@@ -5,10 +5,10 @@ using UnityEngine;
 public class Estado
 {
 
-    public EnemigoIA enemigoIA;
+    public PatrulleroIA enemigoIA;
 
     // PARA ACCEDER A LOS GAMEOBJECTS
-    public void inicializarVariables(EnemigoIA _enemigoIA)
+    public void inicializarVariables(PatrulleroIA _enemigoIA)
     {
         enemigoIA = _enemigoIA;
     }
@@ -40,7 +40,7 @@ public class Estado
     public virtual void Salir() { faseActual = EVENTO.SALIR; } // La fase de SALIR es la última antes de cambiar de ESTADO, aquí deberiamos limpiar lo que haga falta.
 
     // Este es la función a la que llamaremos para que el NPC inicie la máquina de estados. Vincula los EVENTOS con las funciones que ejecuta cada uno
-    public Estado Procesar()
+    public Estado ProcesarEstado()
     {
         if (faseActual == EVENTO.ENTRAR) Entrar();
         if (faseActual == EVENTO.ACTUALIZAR) Actualizar();
