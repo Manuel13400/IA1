@@ -21,6 +21,7 @@ public class Atacar : Estado
     {
         enemigoIA.GetComponent<MeshRenderer>().material.color = Color.red;
 
+        // Si deja de poder disparar volvera al estado VIGILAR
         if (!PuedeAtacar())
         {
             siguienteEstado = new Vigilar(enemigoIA);
@@ -35,28 +36,33 @@ public class Atacar : Estado
 
     public bool PuedeAtacar()
     {
+        // Calcula la distancia entre el enemigo y el jugador
         float distanciaConJugador = Vector3.Distance(enemigoIA.transform.position, enemigoIA.player.transform.position);
+        // A partir de cierta distancia, calcula si esta en su rango
         if (distanciaConJugador <= 5f)
         {
+            // Calcula la direccion en la que invocar el raycast
             Vector3 direccion = (enemigoIA.player.transform.position - enemigoIA.transform.position).normalized;
+            // Si hay algo en la trayectoria del raycast procede
             if (Physics.Raycast(enemigoIA.transform.position, direccion, out RaycastHit hit, 5f))
             {
+                // Si el raycast choca con la capa del jugador...
                 if (((1 << hit.collider.gameObject.layer) & enemigoIA.jugadorCapa) != 0)
                 {
+                    // Se queda quieto en el sitio...
                     enemigoIA.agent.speed = 0f;
 
+                    // Y si no esta disparando, inicia la corrutina
                     if (!enemigoIA.disparando)
                     {
                         enemigoIA.coroutinaDisparo = enemigoIA.StartCoroutine(enemigoIA.AbrirFuego());
                     }
 
-                    enemigoIA.StartCoroutine("AbrirFuego");
-
                     return true;
                 }
                 else
                 {
-                    Debug.Log("Hay una pared en medio...");
+                    // En caso alternativo, vuelve a moverse y deja de disparar
                     enemigoIA.AltoElFuego();
                     enemigoIA.agent.speed = 2.5f;
                     return false;
@@ -64,6 +70,7 @@ public class Atacar : Estado
             }
         } else
         {
+            // Si el jugador se aleja tambien vuelve a moverse y deja de disparar
             enemigoIA.AltoElFuego();
             enemigoIA.agent.speed = 2.5f;
             return false;
